@@ -4,18 +4,18 @@ using System.Text;
 
 namespace ConsoleAppOOPShow
 {
-    class Car
+    public class Car
     {
         //static
         private static int counter = 0;
         public static int Counter { get { return counter; } }
 
-        //fields
+        //fields - defualt accsess is private
         int id;
         int modelYear;
         string brand;
         string modelName;
-        public string color;// not following ecapsilatuon
+        string color;// not following ecapsilatuon
 
         string regPlate;
         public string RegPlate
@@ -44,7 +44,7 @@ namespace ConsoleAppOOPShow
 
         public string CarInfomation()
         {
-            return $"Car id:{id}\nBrand: {brand}\nModel: {modelName}\nYear: {modelYear}\nReg. Plate: {regPlate}\nColor: {color}\n\n";
+            return $"Car id:{id} | Total amount of cars created so far: {counter}\nBrand: {brand}\nModel: {modelName}\nYear: {modelYear}\nReg. Plate: {regPlate}\nColor: {color}\n\n";
         }
     }
 }
