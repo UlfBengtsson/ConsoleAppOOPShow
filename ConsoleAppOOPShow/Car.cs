@@ -9,13 +9,33 @@ namespace ConsoleAppOOPShow
         //static
         private static int counter = 0;
         public static int Counter { get { return counter; } }
+        //public static int Counter { get { return counter; } private set { counter = value; } }
 
         //fields - defualt accsess is private
         int id;
         int modelYear;
         string brand;
         string modelName;
-        string color;// not following ecapsilatuon
+        
+        string color;
+        public string Color
+        {
+            get
+            {
+                return color;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Color is null, empty, or consists only of white-space");
+                }
+                else
+                {
+                    color = value;
+                }
+            } 
+        }
 
         string regPlate;
         public string RegPlate
@@ -35,9 +55,9 @@ namespace ConsoleAppOOPShow
         }
 
         public Car(int modelYear, string brand, string carModelName, string color, string regPlate)
-            : this(modelYear, brand, carModelName)
+            : this(modelYear, brand, carModelName)//chain constructor call
         {
-            this.color = color;
+            Color = color;
             RegPlate = regPlate;
         }
 

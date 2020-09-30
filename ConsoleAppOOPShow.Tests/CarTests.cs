@@ -54,14 +54,60 @@ namespace ConsoleAppOOPShow.Tests
             string brand = "TestBrand";
             string modelName = "Buster";
             string regPlate = "ujf852";
-            string regPlateExspected = "UJF852";
+            string regPlateExpected = "UJF852";
             Car car = new Car(year, brand, modelName);
 
             //Act
             car.RegPlate = regPlate;//string result = car.RegPlate = regPlate;
 
             //Assert
-            Assert.Equal(regPlateExspected, car.RegPlate);
+            Assert.Equal(regPlateExpected, car.RegPlate);
+        }
+
+        [Fact]
+        public void GoodColorCar()
+        {
+            //Arrange
+            int year = 2020;
+            string brand = "TestBrand";
+            string modelName = "Buster";
+            string color = "Green";
+            Car car = new Car(year, brand, modelName);
+
+            //Act
+            car.Color = color;
+
+            //Assert
+            Assert.Equal(color, car.Color);
+        }
+
+        [Fact]
+        public void BadEmptyColorCar()
+        {
+            //Arrange
+            int year = 2020;
+            string brand = "TestBrand";
+            string modelName = "Buster";
+            string color = "";
+            Car car = new Car(year, brand, modelName);
+
+            //Act & Assert
+            Assert.Throws<ArgumentException>( () => car.Color = color);
+        }
+
+        [Fact]
+        public void BadEmptyColorConstructorCar()
+        {
+            //Arrange
+            int year = 2020;
+            string brand = "TestBrand";
+            string modelName = "Buster";
+            string color = "";
+            string regPlate = "asd456";
+
+            //Act & Assert
+            Assert.Throws<ArgumentException>(() => new Car(year, brand, modelName,color,regPlate));
+
         }
     }
 }
