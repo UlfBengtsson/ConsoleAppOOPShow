@@ -81,28 +81,34 @@ namespace ConsoleAppOOPShow.Tests
             Assert.Equal(color, car.Color);
         }
 
-        [Fact]
-        public void BadEmptyColorCar()
+        [Theory]// replace Fact to test with many alternate values that are bad.
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        //[InlineData(" will fail ")]
+        public void BadColorsCar(string color)
         {
             //Arrange
             int year = 2020;
             string brand = "TestBrand";
             string modelName = "Buster";
-            string color = "";
             Car car = new Car(year, brand, modelName);
 
             //Act & Assert
             Assert.Throws<ArgumentException>( () => car.Color = color);
         }
 
-        [Fact]
-        public void BadEmptyColorConstructorCar()
+        [Theory]// replace Fact to test with many alternate values that are bad.
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        //[InlineData(" will fail ")]
+        public void BadColorsConstructorCar(string color)
         {
             //Arrange
             int year = 2020;
             string brand = "TestBrand";
             string modelName = "Buster";
-            string color = "";
             string regPlate = "asd456";
 
             //Act & Assert
